@@ -1,0 +1,855 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "NSaaS NBI",
+    "description": "Huawei Network Slice Management NBI"
+  },
+  "host": "DefaultParameterValue",
+  "basePath": "/nsaas",
+  "securityDefinitions": {
+    "auth": {
+      "type": "basic",
+      "x-testValue": [],
+      "x-skip-client-authentication": false
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/contractmanagement/slas/{slaId}": {
+      "get": {
+        "description": "",
+        "summary": "View SLA",
+        "tags": [
+          "SLA Settings"
+        ],
+        "operationId": "ContractmanagementSlasBySlaIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "slaId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ViewSliceMetric"
+            },
+            "examples": {
+              "application/json": {
+                "value": "45",
+                "time": 215415155
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/contractmanagement/slas/": {
+      "post": {
+        "description": "",
+        "summary": "Create SLA",
+        "tags": [
+          "SLA Settings"
+        ],
+        "operationId": "ContractmanagementSlasPost",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ViewSliceMetric"
+            },
+            "examples": {
+              "application/json": {
+                "value": "45",
+                "time": 215415155
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/contractmanagement/slas/",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Auth-Token": "tokenName"
+              },
+              "body": "body=【华为开发者社区】heelp"
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\"value\":\"45\",\"time\":215415155}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Create SLA",
+            "x-testDescription": ""
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/slicemanagement/slices": {
+      "get": {
+        "description": "List the slices under the current tenant",
+        "summary": "List Slices",
+        "tags": [
+          "Slice Manager"
+        ],
+        "operationId": "SlicemanagementSlicesGet2",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "startIndex",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/slicemanagement/slices?startIndex=?",
+              "headers": {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Basic YWRtaW46Q2hhbmdlbWVfMTIzNDU="
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "List Slices",
+            "x-testDescription": "List the slices under the current tenant"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "description": "createbyServiceName",
+        "summary": "Create Slice",
+        "tags": [
+          "Slice Manager"
+        ],
+        "operationId": "SlicemanagementSlicesPost3",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "template_id",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "onfailure",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "parameters",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "POST",
+              "uri": "/slicemanagement/slices",
+              "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Auth-Token": "tokenName"
+              },
+              "body": "template_id=&name=service1&onfailure=rollback&description=&parameters="
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Create Slice",
+            "x-testDescription": "createbyServiceName"
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/contractmanagement/sla-reports/availability": {
+      "get": {
+        "description": "Get all the configured availability SLA reports.",
+        "summary": "Availability SLA",
+        "tags": [
+          "SLA Reports"
+        ],
+        "operationId": "ContractmanagementSlaReportsAvailabilityGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "period",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ViewSliceMetric"
+            },
+            "examples": {
+              "application/json": {
+                "value": "45",
+                "time": 215415155
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/contractmanagement/sla-reports/availability?period={period}",
+              "headers": {
+                "X-Auth-Token": "tokenName"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\"value\":\"45\",\"time\":215415155}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Availability SLA",
+            "x-testDescription": "Get all the configured availability SLA reports."
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/contractmanagement/sla-reports/forecast": {
+      "get": {
+        "description": "",
+        "summary": "Forecast SLA",
+        "tags": [
+          "SLA Reports"
+        ],
+        "operationId": "ContractmanagementSlaReportsForecastGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ViewSliceMetric"
+            },
+            "examples": {
+              "application/json": {
+                "value": "45",
+                "time": 215415155
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/contractmanagement/sla-reports/forecast",
+              "headers": {
+                "X-Auth-Token": "tokenName"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "RAW",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {},
+              "body": "{\"value\":\"45\",\"time\":215415155}"
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Forecast SLA",
+            "x-testDescription": ""
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/slicemanagement/slices/{sliceId}/operations/{operationId}": {
+      "get": {
+        "description": "This interface is used to query performance Metrics such as the delay and traffic of slices.\r\nQueries Metrics based on the slice ID and Metric name and returns the latest Metric values in the system. The returned content includes: Time, value",
+        "summary": "View Slice Operations",
+        "tags": [
+          "Slice Manager"
+        ],
+        "operationId": "SlicemanagementSlicesOperationsBySliceIdAndOperationIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "sliceId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object"
+            },
+            "examples": {}
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/slicecatalog/templates": {
+      "get": {
+        "description": "",
+        "summary": "Query  Slice Template",
+        "tags": [
+          "Slice Catalog"
+        ],
+        "operationId": "SlicecatalogTemplatesGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [
+          {
+            "request": {
+              "method": "GET",
+              "uri": "/slicecatalog/templates",
+              "headers": {
+                "X-Auth-Token": "tokenName"
+              }
+            },
+            "expectedResponse": {
+              "x-allowExtraHeaders": true,
+              "x-bodyMatchMode": "NONE",
+              "x-arrayOrderedMatching": false,
+              "x-arrayCheckCount": false,
+              "x-matchResponseSchema": true,
+              "headers": {}
+            },
+            "x-testShouldPass": true,
+            "x-testEnabled": true,
+            "x-testName": "Query  Slice Template",
+            "x-testDescription": ""
+          }
+        ],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/slicemanagement/slices/{sliceId}": {
+      "get": {
+        "description": "",
+        "summary": "Get Slice",
+        "tags": [
+          "Slice Manager"
+        ],
+        "operationId": "SlicemanagementSlicesBySliceIdGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "sliceId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "put": {
+        "description": "List the slices under the current tenant",
+        "summary": "Modify Slice",
+        "tags": [
+          "Slice Manager"
+        ],
+        "operationId": "SlicemanagementSlicesBySliceIdPut",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "sliceId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "description": "List the slices under the current tenant",
+        "summary": "Delete Slice",
+        "tags": [
+          "Slice Manager"
+        ],
+        "operationId": "SlicemanagementSlicesBySliceIdDelete",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "sliceId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "auth": []
+          }
+        ],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/slicemanagement/slices/{sliceId}/metrics/{metricName}": {
+      "get": {
+        "description": "",
+        "summary": "View Slice Metric",
+        "tags": [
+          "Slice Manager"
+        ],
+        "operationId": "SlicemanagementSlicesMetricsBySliceIdAndMetricNameGet",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "X-Auth-Token",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "sliceId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "metricName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ViewSliceMetric"
+            },
+            "examples": {
+              "application/json": {
+                "value": "45",
+                "time": 215415155
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-unitTests": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Create slice  data network name": {
+      "title": "Create Slice - Data Network Name",
+      "example": {
+        "serviceId": "xxxxxxxxx",
+        "operationId": "xxxcccvvvv"
+      },
+      "type": "object",
+      "properties": {
+        "serviceId": {
+          "description": "",
+          "example": "xxxxxxxxx",
+          "type": "string"
+        },
+        "operationId": {
+          "description": "",
+          "example": "xxxcccvvvv",
+          "type": "string"
+        }
+      },
+      "required": [
+        "serviceId",
+        "operationId"
+      ]
+    },
+    "ViewSliceMetric": {
+      "title": "View Slice Metric",
+      "example": {
+        "value": "45",
+        "time": 215415155
+      },
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "",
+          "example": "45",
+          "type": "string"
+        },
+        "time": {
+          "description": "",
+          "example": 215415155,
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "value",
+        "time"
+      ]
+    }
+  }
+}

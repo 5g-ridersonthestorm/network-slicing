@@ -1,0 +1,1581 @@
+{
+	"info": {
+		"_postman_id": "4cfbf7df-cf0a-4024-8253-bf16d3a09972",
+		"name": "Huawei Slice Management (5G Riders)",
+		"description": "Network Slice Management NBI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Slice Catalog",
+			"item": [
+				{
+					"name": "Get GST",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/catalog/gsts/{s-nest-id}/",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"catalog",
+								"gsts",
+								"{s-nest-id}",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get GST",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/catalog/gsts/{s-nest-id}/",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"catalog",
+										"gsts",
+										"{s-nest-id}",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n    \"$schema\": \"http://json-schema.org/draft-07/schema#\",\r\n    \"$id\": \"GST.tmf.schema.json\",\r\n    \"title\": \"GenericSliceTemplate\",\r\n    \"definitions\": {\r\n        \"GenericSliceTemplateAttributes\": {\r\n            \"$id\": \"#TMF-GST-Attributes-v16\",\r\n            \"description\": \"Generic Slice Templates is a GSMA proposal for the attributes to be supported by Communincations Services enabled by 5G Network Slice instances.\r\n            \\n Based on GSMA Generic servce template v16 Ocotober 2018 \r\n            \\n core document is Copyright GSMA 2018 \r\n            \\n this document is a transcription into Json schema.\r\n            \\n transcription to Json schema Copyright (c) TM Forum 2019\" ,\r\n            \"type\": \"object\",\r\n            \"properties\": {Service is an abstract base class for defining the Service hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService.\",\r\n            \"type\": \"object\",\r\n            \"properties\": {\r\n            }\r\n            \"TMF-MaximumSupportedPacketSize\": {\r\n                \"$id\": \"#TMF-MaximumSupportedPacketSize\",\r\n                \"description\": \"Describes the maximum packet size in Bytes supported by the slice and may be important for URLLC and MIoT case, or to indicate a supported maximum transmission unit (MTU)\",\r\n                \"type\": \"number\",\r\n                \"default\" {1500},\r\n                },\r\n            },\r\n            \"TMF-DeterministicCommunication\": {\r\n                \"$id\": \"#TMF-DeterministicCommunication\",\r\n                \"description\" : \"Defines if the slice supports deterministic communication for periodic user traffic. \r\n                \\n Periodic traffic refers to the type of traffic with periodic transmissions. \r\n                ,\r\n                \"type\": \"object\",\r\n                \"properties\": {\r\n                   \"availablity\": {\r\n                      \"description\": \"describes if the slice supports deterministic communication or not\r\n                      \\n 0: not available  -\t1: available\",\r\n                      \"type\": \"boolean\",\r\n                      \"default\" : \"false\",\r\n                   },\r\n                   \"periodicity\": {\r\n                       \"description\": \"provides a list of periodicities in seconds supported by the slice\r\n                       \\n ISSUE  Json schema support array of strings but not numbers\",\r\n                       \"type\": \"number\",\t\t   \r\n                   } \t\t\t\t   \r\n                }\r\n            },\r\n            \"TMF-DownlinkThroughputPerUser\":{\r\n                \"$id\": \"#TMF-DownlinkThroughputPerUser\",\r\n                \"description\": \"achievable data rate in downlink that is available ubiquitously across the coverage area to a mobile user/device\",\r\n                \"type\": \"object\",\r\n                \"properties\":  {\r\n                    \"MinimumDownlinkThroughput\": {\r\n                    \"description\": \"minimum data rate supported by the slice in Kbits per UE in downlink, which is required to achieve a sufficient quality experience (dependent on the selected service type) and can be seen as a guaranteed throughput. \r\n                    \\n If the value is 0, best effort traffic is expected where no minimum throughput is guaranteed.\",\r\n                    \"type\": \"number\",\r\n                    \"default\": \"0\",\r\n                    },\r\n                    \"MaximumDownlinkThroughput\": {\r\n                    \"description\": \"Maximum data rate supported by the slice in Kbits per UE in downlink, which is required to achieve a sufficient quality experience (dependent on the selected service type) and can be seen as a guaranteed throughput. \r\n                    \\n If the value is 0, best effort traffic is expected where no minimum throughput is guaranteed.\",\r\n                    \"type\": \"number\",\r\n                    \"default\": \"50\",\r\n                    },\r\n                },\t\t\t\t\t\r\n            },\r\n            \"UplinkThroughputPerUser\": {\r\n            },\r\n            \"DownlinkThroughputPerSlice\": {\r\n            },\r\n            \"UplinkThroughputPerSlice\": {\r\n            },\r\n            \"TerminalDensity\": {\r\n            },\r\n            \"Reliability\": {\r\n            },\r\n            \"SupportedDeviceVelocity\": {\r\n            },\r\n            \"RadioSpectrum\": {\r\n            },\r\n            \"PerformanceMonitoring\": {\r\n            },\r\n            \"RealtimeChargingBilling\": {\r\n            },\r\n            \"UserManagementOpenness\": {\r\n            },\r\n            \"DelayTolerance\": {\r\n            },\r\n            \"PerformancePrediction\": {\r\n            },\r\n            \"Synchronicity\":{\r\n            },\r\n            \"CloudSupport\": {\r\n            },\r\n            \"PositioningSupport\": {\r\n            },\r\n            \"LocationBasedMessageDelivery\": {\r\n            },\r\n            \"SupportedAccessTechnologies\": {\r\n            },\r\n            \"Isolation\": {\r\n            },\r\n            \"UserDataAccess\": {\r\n            },\r\n            \"TunnellingMechanism\": {\r\n            },\r\n            \"SupportForNon-IPTraffic\": {\r\n            },\r\n            \"SessionAndServiceContinuity\": {\r\n            },\r\n            \"NumberOfTerminals\": {\r\n            },\r\n            \"RootCauseInvestigation\": {\r\n            },\r\n            \"Coverage\": {\r\n            },\r\n            \"PrivateOperation\": {\r\n            },\r\n            \"Multicast\": \r\n            },\r\n            \"Security\": {\r\n            },\r\n            \"SliceQualityOfServiceParameters\": {\r\n            },\r\n            \"EnergyEfficiency\": {\r\n            },\r\n            \"SlicePriority\": {\r\n            },\r\n            \"MMTel support\": {\r\n            },\r\n            \"Mission-criticalServiceSupport\": {\r\n            },\r\n            \"GroupCommunciationSupport\": {\r\n            },\r\n            \"V2XcommunciationSupport\": {\r\n            },\r\n            \"3rd Party Network Functions\": {\r\n            },\r\n            \"Energy efficient communication support\": {\r\n                },\r\n            },\r\n        },\r\n        \"allOf\": [\r\n          {\r\n          \"$ref\": \"../Common/Entity.schema.json#Entity\"\r\n          }\r\n        ]\r\n}\r\n"
+						}
+					]
+				},
+				{
+					"name": "Get NST",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/catalog/gsts/{s-nest-id}/",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"catalog",
+								"gsts",
+								"{s-nest-id}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Slice Management",
+			"item": [
+				{
+					"name": "Metrics",
+					"item": [
+						{
+							"name": "Add Slice Metric",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/metrics/",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"{sliceId}",
+										"metrics",
+										""
+									]
+								},
+								"description": "Add a Metric to a Slice"
+							},
+							"response": [
+								{
+									"name": "View Slice Metric",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": ""
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"body": "{  \r\n   \"value\":\"45\",\r\n   \"time\":215415155\r\n}\r\n"
+								},
+								{
+									"name": "Add Slice Metric",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Auth-Token",
+												"value": "tokenName"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "body",
+													"value": "【华为开发者社区】heelp",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/metrics/",
+											"protocol": "https",
+											"host": [
+												"{baseurl}"
+											],
+											"path": [
+												"nsaas",
+												"slicemanagement",
+												"slices",
+												"{sliceId}",
+												"metrics",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"body": "{  \r\n   \"value\":\"45\",\r\n   \"time\":215415155\r\n}\r\n"
+								}
+							]
+						},
+						{
+							"name": "Modify Slice Metric",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/metrics/{metricId}",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"{sliceId}",
+										"metrics",
+										"{metricId}"
+									]
+								},
+								"description": "Modify a Metric"
+							},
+							"response": [
+								{
+									"name": "View Slice Metric",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": ""
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"body": "{  \r\n   \"value\":\"45\",\r\n   \"time\":215415155\r\n}\r\n"
+								}
+							]
+						},
+						{
+							"name": "Remove Slice Metric",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "body",
+											"value": "【华为开发者社区】heelp",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/metrics/{metricId}",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"{sliceId}",
+										"metrics",
+										"{metricId}"
+									]
+								},
+								"description": "Remove a Metric from a Slice"
+							},
+							"response": [
+								{
+									"name": "View Slice Metric",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": ""
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "Text",
+									"header": [],
+									"cookie": [],
+									"body": "{  \r\n   \"value\":\"45\",\r\n   \"time\":215415155\r\n}\r\n"
+								}
+							]
+						},
+						{
+							"name": "View Slice Metric",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/metrics/{metricName}",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"{sliceId}",
+										"metrics",
+										"{metricName}"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "#UEs - Returns the actual metric specified ; in this case the ue count in the specified slice",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{baseurl}/nsaas/slicemanagement/slices/a0b0adf6-16aa-4157-abc0-d036f5c2fb2f/metrics/ue-actual",
+											"protocol": "https",
+											"host": [
+												"{baseurl}"
+											],
+											"path": [
+												"nsaas",
+												"slicemanagement",
+												"slices",
+												"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f",
+												"metrics",
+												"ue-actual"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{ \"ue-actual\": {\n    \"value\": \"6\",\n    \"timestamp\": \"2018-04-13T18:25:43.511Z\"\n}\n}"
+								},
+								{
+									"name": "View Slice Metric - #UEs - Returns the  forecast metric specified ; in this case the forecsated maxUE in the specified slice",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{baseurl}/nsaas/slicemanagement/slices/a0b0adf6-16aa-4157-abc0-d036f5c2fb2f/metrics/maxUE?type=actual",
+											"protocol": "https",
+											"host": [
+												"{baseurl}"
+											],
+											"path": [
+												"nsaas",
+												"slicemanagement",
+												"slices",
+												"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f",
+												"metrics",
+												"maxUE"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "actual"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"maxUE\": {\n        \"actual\": \"16\",\n        \"timestamp\": \"2018-04-13T18:25:43.511Z\"\n    }\n}"
+								},
+								{
+									"name": "View Slice Metric Forecast",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Auth-Token",
+												"value": "tokenName"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/metrics/{metricName}?type=forecast",
+											"protocol": "https",
+											"host": [
+												"{baseurl}"
+											],
+											"path": [
+												"nsaas",
+												"slicemanagement",
+												"slices",
+												"{sliceId}",
+												"metrics",
+												"{metricName}"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "forecast"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{\n    \"maxUE\": {\n        \"forecast\": \"6\",\n        \"timestamp\": \"2018-04-13T18:25:43.511Z\"\n    }\n}"
+								}
+							]
+						}
+					],
+					"description": "KPI Management",
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Area Management",
+					"item": [
+						{
+							"name": "List Cell",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{baseurl}/area/cells",
+									"protocol": "http",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"area",
+										"cells"
+									]
+								},
+								"description": "getBaseStationsBySlice"
+							},
+							"response": [
+								{
+									"name": "List G-NodeB's",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": ""
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{  \"gNBs\": [{\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"179834\",\r\n      \"userLabel\": \"AIRESLRBS0001\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7036111111\",\r\n      \"latitude\": \"-0.271666684467\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"83386\",\r\n      \"userLabel\": \"AIRESLRBS0002\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7038888889\",\r\n      \"latitude\": \"-0.276666666667\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"30407\",\r\n      \"userLabel\": \"AIRESLRBS0003\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.6922222222\",\r\n      \"latitude\": \"-0.271666666667\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"30408\",\r\n      \"userLabel\": \"AIRESLRBS0004\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.6922222222\",\r\n      \"latitude\": \"-0.271666668467\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"202414\",\r\n      \"userLabel\": \"AIRESLRBS0005\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7225\",\r\n      \"latitude\": \"-0.253333333333\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"83388\",\r\n      \"userLabel\": \"AIRESLRBS0006\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7038888889\",\r\n      \"latitude\": \"-0.276666666667\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"31416\",\r\n      \"userLabel\": \"AIRESLRBS0007\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7030555556\",\r\n      \"latitude\": \"-0.250277777778\"\r\n    }]\r\n    }"
+								},
+								{
+									"name": "List Cell",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://{baseurl}/area/cells",
+											"protocol": "http",
+											"host": [
+												"{baseurl}"
+											],
+											"path": [
+												"area",
+												"cells"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{ \"NRCells\": [{\r\n      \"type\": \"NRGenericCell\",\r\n      \"nGCI\": \"84573\",\r\n      \"gNBId\": \"83386\",\r\n      \"administrativeState\": \"1\",\r\n      \"operationalState\": \"1\",\r\n      \"tac\": \"21221\",\r\n      \"userLabel\": \"AIRESLRBS0002A\",\r\n      \"plmnIdList\": [\r\n        [\"208\", \"01\"]\r\n      ]\r\n    },\r\n    {\r\n      \"type\": \"NRGenericCell\",\r\n      \"nGCI\": \"84219\",\r\n      \"gNBId\": \"83386\",\r\n      \"administrativeState\": \"1\",\r\n      \"operationalState\": \"1\",\r\n      \"tac\": \"21221\",\r\n      \"userLabel\": \"AIRESLRBS0002B\",\r\n      \"plmnIdList\": [\r\n        [\"208\", \"01\"]\r\n      ]\r\n    },\r\n    {\r\n      \"type\": \"NRGenericCell\",\r\n      \"nGCI\": \"83733\",\r\n      \"gNBId\": \"83386\",\r\n      \"administrativeState\": \"1\",\r\n      \"operationalState\": \"1\",\r\n      \"tac\": \"21221\",\r\n      \"userLabel\": \"AIRESLRBS0002C\",\r\n      \"plmnIdList\": [\r\n        [\"208\", \"01\"]\r\n      ]\r\n    },\r\n    {\r\n      \"type\": \"NRGenericCell\",\r\n      \"nGCI\": \"31690\",\r\n      \"gNBId\": \"30407\",\r\n      \"administrativeState\": \"1\",\r\n      \"operationalState\": \"1\",\r\n      \"tac\": \"21221\",\r\n      \"userLabel\": \"AIRESLRBS0003A\",\r\n      \"plmnIdList\": [\r\n        [\"208\", \"01\"]\r\n      ]\r\n    }]\r\n}"
+								}
+							]
+						},
+						{
+							"name": "List GNodeBs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{baseurl}/area/gnodebs",
+									"protocol": "http",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"area",
+										"gnodebs"
+									]
+								},
+								"description": "getBaseStationsBySlice"
+							},
+							"response": [
+								{
+									"name": "List G-NodeB's",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "http://{baseurl}/area/gnodebs/",
+											"protocol": "http",
+											"host": [
+												"{baseurl}"
+											],
+											"path": [
+												"area",
+												"gnodebs",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [],
+									"cookie": [],
+									"body": "{  \"gNBs\": [{\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"179834\",\r\n      \"userLabel\": \"AIRESLRBS0001\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7036111111\",\r\n      \"latitude\": \"-0.271666684467\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"83386\",\r\n      \"userLabel\": \"AIRESLRBS0002\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7038888889\",\r\n      \"latitude\": \"-0.276666666667\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"30407\",\r\n      \"userLabel\": \"AIRESLRBS0003\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.6922222222\",\r\n      \"latitude\": \"-0.271666666667\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"30408\",\r\n      \"userLabel\": \"AIRESLRBS0004\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.6922222222\",\r\n      \"latitude\": \"-0.271666668467\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"202414\",\r\n      \"userLabel\": \"AIRESLRBS0005\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7225\",\r\n      \"latitude\": \"-0.253333333333\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"83388\",\r\n      \"userLabel\": \"AIRESLRBS0006\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7038888889\",\r\n      \"latitude\": \"-0.276666666667\"\r\n    },\r\n    {\r\n      \"type\": \"GNodeBFunction\",\r\n      \"gNBId\": \"31416\",\r\n      \"userLabel\": \"AIRESLRBS0007\",\r\n      \"vendorName\": \"Huawei\",\r\n      \"swVersion\": \"1.2.14\",\r\n      \"longitude\": \"43.7030555556\",\r\n      \"latitude\": \"-0.250277777778\"\r\n    }]\r\n    }"
+								}
+							]
+						},
+						{
+							"name": "List GNodeBs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://{baseurl}/area/gnodebs",
+									"protocol": "http",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"area",
+										"gnodebs"
+									]
+								},
+								"description": "getBaseStationsBySlice"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "List Slices",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"type": "any"
+								},
+								{
+									"key": "password",
+									"type": "any"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46Q2hhbmdlbWVfMTIzNDU="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices?startIndex=?",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices"
+							],
+							"query": [
+								{
+									"key": "startIndex",
+									"value": "?"
+								}
+							]
+						},
+						"description": "List the slices under the current tenant"
+					},
+					"response": [
+						{
+							"name": "List Slices",
+							"originalRequest": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"type": "any"
+										},
+										{
+											"key": "password",
+											"type": "any"
+										},
+										{
+											"key": "saveHelperData",
+											"type": "any"
+										},
+										{
+											"key": "showPassword",
+											"value": false,
+											"type": "boolean"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW46Q2hhbmdlbWVfMTIzNDU="
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices?startIndex=?",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices"
+									],
+									"query": [
+										{
+											"key": "startIndex",
+											"value": "?"
+										}
+									]
+								},
+								"description": "List the slices under the current tenant"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "{\n\n\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Slice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Slice",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"type": "any"
+								},
+								{
+									"key": "password",
+									"type": "any"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46Q2hhbmdlbWVfMTIzNDU="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}"
+							]
+						},
+						"description": "List the slices under the current tenant"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Slice",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"type": "any"
+								},
+								{
+									"key": "password",
+									"type": "any"
+								},
+								{
+									"key": "saveHelperData",
+									"type": "any"
+								},
+								{
+									"key": "showPassword",
+									"value": false,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic YWRtaW46Q2hhbmdlbWVfMTIzNDU="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}"
+							]
+						},
+						"description": "Delete the slice"
+					},
+					"response": [
+						{
+							"name": "Delete Slice",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Basic YWRtaW46Q2hhbmdlbWVfMTIzNDU="
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/a0b0adf6-16aa-4157-abc0-d036f5c2fb2f",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Allocate Network",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n   \"templateId\":\"3b1ca6e1-176a-4d63-9b11-91e6cf2a38c3\",\r\n   \"name\":\"eMBB Slice Example\",\r\n   \"onFailure\":\"rollback\",\r\n   \"description\":\"Slice -Stage 18 Trieste to Pau.\",\r\n   \"parameters\":{  \r\n      \"location\":\"Pau\",\r\n      \"sliceActivationDate\":\"2018-04-13T18:25:43.511Z\",\r\n      \"sliceExpirationDate\":\"2018-05-13T18:25:43.511Z\",\r\n      \"sla\":\"Premium\",\r\n      \"servicePriority\":\"High\",\r\n      \"maxUE\":1000,\r\n      \"enableCharging\":\"Yes\",\r\n      \"enableMobility\":\"Yes\"\r\n   }\r\n}\r\n"
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices"
+							]
+						},
+						"description": "Goal – Create a new instance of a network slice according to an offer in a catalog. Sufficient information is provided to calculate the topology and resource requirements. All necessary resources are allocated.\r\nPreconditions – The tenant has found a suitable service offering in the catalog. The tenant has a reference to the service template. The tenant knows which mandatory/optional parameters are required to complete the template. The tenant has decided the values for the parameters.\r\nRequest – The tenant submits a POST operation to the NSaaS endpoint, containing\r\n•\tName of slice (of relevance to tenant only)\r\n•\tReference to service template (URI to specific version of Network Slice Template)\r\n•\tParameters (array of key-value pairs, according to names/structure as defined in template)\r\n•\tCallback address for success/failure notification (because this operation may need more than a few seconds to complete)\r\nResponse – The network provider returns an immediate response, which may be one of\r\n•\tRequest is accepted, notification will be sent later to report success or failure\r\n•\tInvalid request (for example parameters do not match template)\r\n•\tNot allowed (for example tenant is not allowed to request this service type)\r\nNotification (success) – The network provider submits a POST operation to the callback address, containing\r\n•\tName of slice (as received in the request)\r\n•\tNetwork Slice ID\r\nNotification (failure) – The network provider submits a POST operation to the callback address, containing\r\n•\tName of slice (as received in the request)\r\n•\tReason for failure (for example invalid request, not allowed)\r\n"
+					},
+					"response": [
+						{
+							"name": "Allocate Network -Create eMBB Slice for Emergency Services",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n   \"templateId\":\"3b1ca6e1-176a-4d63-9b11-91e6cf2a38c3\",\r\n   \"name\":\"Create eMBB Slice for Emergency Service\",\r\n   \"onFailure\":\"rollback\",\r\n   \"description\":\"eMBB Slice for Emergency Service\",\r\n   \"parameters\":{  \r\n      \"location\":\"Rivarolo Ligure\",\r\n      \"sliceActivationDate\":\"2019-04-26T06:00:00.511Z\",\r\n      \"sliceExpirationDate\":\"2019-04-26T23:59:59.511Z\",\r\n      \"sla\":\"Premium\",\r\n      \"servicePriority\":\"High\",\r\n      \"maxUE\":10000,\r\n      \"enableCharging\":\"Yes\",\r\n      \"enableMobility\":\"Yes\"\r\n   }\r\n}\r\n"
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"slice\": {\n        \"sliceId\": \"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f\",\n        \"operationId\": \"31af59f1dc72437cb1c8f7\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Configure Network",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"parameters\": {\n    \"maxUE\": 6\n  },\n  \"callbacks\": [\n    {\n      \"url\": \"https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/sla-reports?period={period}\",\n      \"type\": \"period\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/configure",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}",
+								"configure"
+							]
+						},
+						"description": "Goal – Configure instance-specific data for an existing instance of a network slice. Any configuration data which was not defined during allocation is defined at this time (late binding). All related resources are configured and ready for activation.\r\nPreconditions – The tenant has allocated a network slice instance and has received a Network Slice ID. The tenant wishes to configure some optional parameters which were not specified during allocation (late binding) or wishes to change some parameters which were specified during allocation.\r\nRequest – The tenant submits a PUT operation to the network slice instance endpoint, containing\r\n•\tParameters (array of key-value pairs, according to names/structure as defined in template)\r\n•\tSLA Description\r\n•\tCallback URI for SLA measurement reports\r\n•\tCallback URI for SLA forecast reports\r\n•\tCallback URI for SLA breach notifications\r\nResponse – The network provider returns an immediate response, which may be one of\r\n•\tRequest is accepted\r\n•\tInvalid request (for example parameters do not match template)\r\n•\tNot allowed (for example combination of parameters is not allowed)"
+					},
+					"response": [
+						{
+							"name": "Configure Network Slice",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"parameters\": {\n    \"maxUE\": 1000\n  },\n  \"callbacks\": [\n    {\n      \"url\": \"https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/sla-reports?period={period}\",\n      \"type\": \"period\"\n    }\n  ]\n}"
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/a0b0adf6-16aa-4157-abc0-d036f5c2fb2f/configure",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f",
+										"configure"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"slice\": {\n        \"sliceId\": \"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f\",\n        \"operationId\": \"31af59f1dc72437cb1c8f7\",\n        \"status\": \"configured\"\n    }\n}\n"
+						}
+					]
+				},
+				{
+					"name": "Activate Network",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"templateId\": \"3b1ca6e1-176a-4d63-9b11-91e6cf2a38c3\",\n  \"name\": \"eMBB Slice Example\",\n  \"onFailure\": \"rollback\",\n  \"description\": \"Slice -Stage 18 Trieste to Pau.\",\n  \"parameters\": {\n    \"location\": \"Pau\",\n    \"sliceActivationDate\": \"2018-04-13T18:25:43.511Z\",\n    \"sliceExpirationDate\": \"2018-05-13T18:25:43.511Z\",\n    \"sla\": \"Premium\",\n    \"servicePriority\": \"High\",\n    \"maxUE\": 1000,\n    \"enableCharging\": \"Yes\",\n    \"enableMobility\": \"Yes\"\n  },\n  \"callbacks\": [\n    {\n      \"url\": \"https://{baseurl}/nsaas/sla-management/sla-reports/availability?period={period}\",\n      \"type\": \"period\"\n    },\n    {\n      \"url\": \"https://{baseurl}/nsaas/sla-management/sla-reports/forecast?period={period}\",\n      \"type\": \"period\"\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/activate",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}",
+								"activate"
+							]
+						},
+						"description": "Goal – Activate an existing instance of a network slice. All related resources are activated.\r\nPreconditions – The tenant has allocated a network slice instance and has received a Network Slice ID. The network slice instance is not active.\r\nRequest – The tenant submits a POST operation to the network slice instance + “/activate” endpoint.\r\nResponse – The network provider returns an immediate response, which may be one of\r\n•\tRequest is accepted\r\n•\tNot allowed (for example late binding parameters are missing)"
+					},
+					"response": [
+						{
+							"name": "Activate Network Slice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/a0b0adf6-16aa-4157-abc0-d036f5c2fb2f/activate",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f",
+										"activate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"slice\": {\n        \"sliceId\": \"a0b0adf6-16aa-4157-abc0-d036f5c2fb2f\",\n        \"status\": \"activated\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Deactivate Network Slice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/deactivate?_body=false",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}",
+								"deactivate"
+							],
+							"query": [
+								{
+									"key": "_body",
+									"value": "false"
+								}
+							]
+						},
+						"description": "Goal – Activate an existing instance of a network slice. All related resources are activated.\r\nPreconditions – The tenant has allocated a network slice instance and has received a Network Slice ID. The network slice instance is not active.\r\nRequest – The tenant submits a POST operation to the network slice instance + “/activate” endpoint.\r\nResponse – The network provider returns an immediate response, which may be one of\r\n•\tRequest is accepted\r\n•\tNot allowed (for example late binding parameters are missing)"
+					},
+					"response": [
+						{
+							"name": "Deactivate Network Slice",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/deactivate?_body=false",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"nsaas",
+										"slicemanagement",
+										"slices",
+										"{sliceId}",
+										"deactivate"
+									],
+									"query": [
+										{
+											"key": "_body",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Query Slice",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Slice Operations",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/operations/{operationId}",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}",
+								"operations",
+								"{operationId}"
+							]
+						},
+						"description": "This interface is used to query performance Metrics such as the delay and traffic of slices.\r\nQueries Metrics based on the slice ID and Metric name and returns the latest Metric values in the system. The returned content includes: Time, value"
+					},
+					"response": [
+						{
+							"name": "View Slice Operations",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://172.19.49.103:26335/nmsf/slicemanager/v1/slices/{sliceId}/operations/{operationId}",
+									"protocol": "https",
+									"host": [
+										"172",
+										"19",
+										"49",
+										"103"
+									],
+									"port": "26335",
+									"path": [
+										"nmsf",
+										"slicemanager",
+										"v1",
+										"slices",
+										"{sliceId}",
+										"operations",
+										"{operationId}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{  \r\n   \"operation\":[  \r\n      {  \r\n         \"operationId\":\"xxxxxx\",\r\n         \"operation\":\"Create\",\r\n         \"result\":\"success\",\r\n         \"userId\":\"ccxxvvv\",\r\n         \"operationContent\":\"Create a new eMBB slice\",\r\n         \"progress\":\"done\",\r\n         \"operateAt\":2166166,\r\n         \"finishedAt\":26546546\r\n      }\r\n   ]\r\n}\r\n"
+						}
+					]
+				},
+				{
+					"name": "Example of Modify Slice interface responses",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n   \"templateId\":\"ssssssxxxxxxxxx\",\r\n   \"name\":\"FMC Slice Example\",\r\n   \"onFailure\":\"rollback\",\r\n   \"description\":\"create a FMC slice now.\",\r\n   \"parameters\":{  \r\n      \"geometry\": {\r\n        \"type\": \"Polygon\",\r\n        \"coordinates\": [      \r\n          [\r\n            [\r\n              -0.439453125,\r\n              43.35364335728179\r\n            ],\r\n            [\r\n              -0.44837951660156244,\r\n              43.34615368345727\r\n            ],\r\n            [\r\n              -0.2849578857421875,\r\n              43.3101903843356\r\n            ],\r\n            [\r\n              -0.2801513671875,\r\n              43.323179587489086\r\n            ],\r\n            [\r\n              -0.439453125,\r\n              43.35364335728179\r\n            ]\r\n          ]\r\n        ]\r\n      },\r\n      \"sliceActivationDate\":25282555,\r\n      \"sliceExpirationDate\":\"85541541\",\r\n      \"e2eLatency\":20,\r\n      \"bandwidth\":100,\r\n      \"sla\":\"Premium\",\r\n      \"servicePriority\":\"High\",\r\n      \"MaxUE\":1000,\r\n      \"enableCharging\":\"Yes\",\r\n      \"enableMobility\":\"Yes\"\r\n   }\r\n}\r\n\r\n"
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices"
+							]
+						},
+						"description": "Modify Slice"
+					},
+					"response": []
+				},
+				{
+					"name": "SLA Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/nsaas/slicemanagement/slices/{sliceId}/sla-reports?period={period}",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"nsaas",
+								"slicemanagement",
+								"slices",
+								"{sliceId}",
+								"sla-reports"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "{period}"
+								}
+							]
+						},
+						"description": "Get all the configured availability SLA reports."
+					},
+					"response": [
+						{
+							"name": "View Slice Metric",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{  \r\n   \"value\":\"45\",\r\n   \"time\":215415155\r\n}\r\n"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "API Management",
+			"item": [
+				{
+					"name": "Authentication",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/api-operations/huawei-sm-access-token:get-token",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"api-operations",
+								"huawei-sm-access-token:get-token"
+							]
+						},
+						"description": "https://{baseurl}/operations/huawei-sm-access-token:get-token This topic describes how to create the access token required to make calls into the API Management REST API."
+					},
+					"response": [
+						{
+							"name": "Login Authentication",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"input\": {\r\n\t\"user-name\":\"admin@HSM\",\r\n\t\"password\": \"password123\"\r\n\t}\r\n}\r\n"
+								},
+								"url": {
+									"raw": "https://{baseurl}/operations/huawei-sm-access-token:get-token",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"operations",
+										"huawei-sm-access-token:get-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\"output\": {\r\n\"token-data\": {\r\n\"token-id\":\"39AD567FEF7EB483:9521C4BD43C611E3257DD895DF55747F81E219F75FD2F09E106EB23108AE6D72\",\r\n\"expired-at\":{\"_value\": \"2018-01-10T17:47:54,001+08:00\"}\r\n}\r\n}\r\n}\r\n"
+						}
+					]
+				}
+			],
+			"description": "Access to the API Management REST API must be granted before calls can be successfully made. "
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "35c4e88a-8d9b-4a45-9798-a692f7f62b28",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b568201a-56b1-4f80-a158-884f2b4a6835",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

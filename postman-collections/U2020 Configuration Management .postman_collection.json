@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "37ee8470-a97c-4036-9bbe-717a56845d63",
+		"name": "U2020 Configuration Management ",
+		"description": "RAN EMS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RAN Transmission",
+			"item": [
+				{
+					"name": "Configure Backhaul Backup Mode",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Auth-Token",
+								"value": "tokenName"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n   \"name\":\"Set backhaul backup mode\",\r\n   \"onFailure\":\"rollback\",\r\n   \"description\":\"Changes the backup mode for the backhaul for the radio base station\",\r\n   \"parameters\":{  \r\n      \"gNBID\":7406859, \r\n      \"backhaulMode\":\"integratedAccessBackhaul\",\r\n      \"runTrigger\":\"onFailureAfterRetries\",\r\n      \"qosPolicy\":\"normal\"\r\n   }\r\n}"
+						},
+						"url": {
+							"raw": "https://{baseurl}/U2020/ran-transmission/backhaul/backup",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"U2020",
+								"ran-transmission",
+								"backhaul",
+								"backup"
+							]
+						},
+						"description": "Changes the backup mode for the backhaul for the radio base station"
+					},
+					"response": [
+						{
+							"name": "Configure Mode",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Auth-Token",
+										"value": "tokenName"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{  \r\n   \"name\":\"Set backhaul backup mode\",\r\n   \"onFailure\":\"rollback\",\r\n   \"description\":\"Changes the backup mode for the backhaul for the radio base station\",\r\n   \"parameters\":{  \r\n      \"gNBID\":7406859, \r\n      \"backhaulMode\":\"integratedAccessBackhaul\",\r\n      \"runTrigger\":\"onFailureAfterRetries\",\r\n      \"qosPolicy\":\"normal\"\r\n   }\r\n}"
+								},
+								"url": {
+									"raw": "https://{baseurl}/U2020/ran-transmission/backhaul/backup",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"U2020",
+										"ran-transmission",
+										"backhaul",
+										"backup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{  \r\n \"gNBID\":7406859, \r\n \"backhaulMode\":\"integratedAccessBackhaul\"\r\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7e4bf932-b966-4e13-8150-e93146e006be",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cba8fdec-9169-4e2a-bce9-09c7835808a0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "API Management",
+			"item": [
+				{
+					"name": "Authentication",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{baseurl}/api-operations/huawei-sm-access-token:get-token",
+							"protocol": "https",
+							"host": [
+								"{baseurl}"
+							],
+							"path": [
+								"api-operations",
+								"huawei-sm-access-token:get-token"
+							]
+						},
+						"description": "https://{baseurl}/operations/huawei-sm-access-token:get-token This topic describes how to create the access token required to make calls into the API Management REST API."
+					},
+					"response": [
+						{
+							"name": "Login Authentication",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"input\": {\r\n\t\"user-name\":\"admin@HSM\",\r\n\t\"password\": \"password123\"\r\n\t}\r\n}\r\n"
+								},
+								"url": {
+									"raw": "https://{baseurl}/operations/huawei-sm-access-token:get-token",
+									"protocol": "https",
+									"host": [
+										"{baseurl}"
+									],
+									"path": [
+										"operations",
+										"huawei-sm-access-token:get-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\r\n\"output\": {\r\n\"token-data\": {\r\n\"token-id\":\"39AD567FEF7EB483:9521C4BD43C611E3257DD895DF55747F81E219F75FD2F09E106EB23108AE6D72\",\r\n\"expired-at\":{\"_value\": \"2018-01-10T17:47:54,001+08:00\"}\r\n}\r\n}\r\n}\r\n"
+						}
+					]
+				}
+			],
+			"description": "Access to the API Management REST API must be granted before calls can be successfully made. "
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "595bf720-2a25-4df1-8808-ec534451fc4e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c942daa0-bb24-4e38-b45e-dcaf78f11cd1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
